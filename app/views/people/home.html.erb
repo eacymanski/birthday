@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Home</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= link_to "Name", :sort => "name" %></th>
+      <th><%= link_to "Birthday", :sort => "birthday" %></th>
+      <th><%= link_to "Age", :sort => "age" %></th>
+      <th><%= link_to "Countdown", :sort => "days_until" %></th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= link_to person.name, person %></td>
+        <td><%= person.birthday %></td>
+        <td><%= person.age %></td>
+        <td><%= person.days_until %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Person', new_person_path %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @person.birthday %>
+  <br>
+  You were born on a <%= @person.birthday.strftime("%A")%>
+</p>
+  
+<P>
+  <strong>Age:</strong>
+  <%=@person.age%>
+</P>
+
+<p>
+  <strong id = "exciting">Only <%=@person.days_until%> days until your next birthday!</strong>
+  <br>
+  <% if @person.days_until <=30 %>
+     <img src= " https://thehoytlibrary.files.wordpress.com/2011/03/birthday-cake-balloons.jpg?w=500" >
+  <% end %>  
+  <br>
+  Your next birthday will be on a <%=Date.new(Time.now.utc.to_date.year, @person.birthday.month, @person.birthday.day).strftime("%A")%>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %> |
+<%= link_to 'Destroy', @person, method: :delete, data: { confirm: 'Are you sure?' } %>
