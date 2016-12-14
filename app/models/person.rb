@@ -1,7 +1,8 @@
 class Person < ActiveRecord::Base
-  def age
-    now = Time.now.utc.to_date
-    now.year-birthday.year-(now.month<birthday.month||(birthday.month==now.month&&birthday.day>now.day) ? 1 : 0)
+ def age
+    age = Time.now.year - year
+    age = age-1 if !happened_this_year
+    return age
   end
 
   def days_until
@@ -19,5 +20,12 @@ class Person < ActiveRecord::Base
     birthday.day
   end
   
+  def year
+    birthday.year
+  end
+  
+  def happened_this_year
+    return month < Time.now.month || (month == Time.now.month && day <= Time.now.day)
+  end
 
 end

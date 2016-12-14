@@ -24,7 +24,7 @@
      <img src= " https://thehoytlibrary.files.wordpress.com/2011/03/birthday-cake-balloons.jpg?w=500" >
   <% end %>  
   <br>
-  Your next birthday will be on a <%=Date.new(Time.now.utc.to_date.year, @person.birthday.month, @person.birthday.day).strftime("%A")%>
+  Your next birthday will be on a <%=next_birthday_weekday%>
 </p>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
